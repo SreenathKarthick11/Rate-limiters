@@ -47,4 +47,9 @@ redis.call("HMSET", key,
 -- Optional: set TTL so idle buckets expire
 redis.call("EXPIRE", key, math.ceil(capacity / refill_rate))
 
-return allowed
+local retry_after = 0
+if tokens < 1 then
+    retry_after = math.ceil((1 - tokens) / refill_rate)
+end
+
+return {allowed,tokens,retry_after}

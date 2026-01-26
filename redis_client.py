@@ -26,9 +26,9 @@ def run_token_bucket(key: str,capacity: int,refill_rate: float,now: int) -> bool
         True  -> request allowed
         False -> request denied
     """
-    result = token_bucket_script(
+    allowed,remaining,retry_after = token_bucket_script(
         keys=[key],
         args=[capacity, refill_rate, now]
     )
 
-    return result == 1
+    return (allowed == 1),remaining,retry_after
