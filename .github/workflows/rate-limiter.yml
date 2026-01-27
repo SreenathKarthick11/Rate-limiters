@@ -1,0 +1,30 @@
+name: Rate Limiter CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify-rate-limiter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build and start services
+        run: |
+          docker-compose up -d --build
+          sleep 5
+
+      - name: Simulate traffic
+        run: |
+          ./ci/traffic.sh
+
+      - name: Validate rate limiting
+        run: |
+          ./ci/assert.sh
+
+      - name: Shutdown
+        if: always()
+        run: docker-compose down
