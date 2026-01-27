@@ -3,7 +3,7 @@ from pathlib import Path
 
 # Redis connection
 redis_client = redis.Redis(
-    host="localhost",
+    host="redis",    # localhost
     port=6379,
     decode_responses=True
 )
