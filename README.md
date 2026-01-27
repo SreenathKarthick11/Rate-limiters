@@ -1,5 +1,7 @@
 # Rate-limiters
 
+![Rate Limiter CI](https://github.com/SreenathKarthick11/Rate-limiters/actions/workflows/rate-limiter.yml/badge.svg)
+
 ## Token Bucket Rate Limiter (v1)
 
 Algorithm: Token Bucket  
