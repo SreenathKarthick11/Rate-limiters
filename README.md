@@ -2,19 +2,7 @@
 
 ![Rate Limiter CI](https://github.com/SreenathKarthick11/Rate-limiters/actions/workflows/rate-limiter.yml/badge.svg)
 
-## Token Bucket Rate Limiter (v1)
 
-Algorithm: Token Bucket  
-Identifier: Client IP  
+## Algorithms
 
-Parameters:
-- Capacity: 5 tokens
-- Refill rate: 0.5 tokens / second (5 per 10 seconds)
-
-Redis key format:
-rate:token_bucket:<client_ip>
-
-Stored values:
-- tokens
-- last_refill_timestamp
-
+[Token Bucket Doc](docs/token_bucket.md)
