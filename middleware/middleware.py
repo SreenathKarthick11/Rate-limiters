@@ -1,5 +1,5 @@
 from fastapi import Request, HTTPException, status
-from limiter import token_bucket_limit
+from algorithms.token_bucket import token_bucket_limit
 
 def rate_limit(capacity: int, refill_rate: float):
     async def dependency(request: Request):

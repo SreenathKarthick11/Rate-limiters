@@ -1,5 +1,5 @@
 from fastapi import FastAPI,Depends
-from middleware import rate_limit
+from middleware.middleware import rate_limit
 app = FastAPI()
 
 @app.get("/")

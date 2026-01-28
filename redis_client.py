@@ -9,7 +9,7 @@ redis_client = redis.Redis(
 )
 
 # Load Lua script
-LUA_SCRIPT_PATH = Path(__file__).parent / "token_bucket.lua"
+LUA_SCRIPT_PATH = Path(__file__).parent / "algorithms" / "token_bucket.lua"
 
 with open(LUA_SCRIPT_PATH, "r") as f:
     TOKEN_BUCKET_LUA = f.read()
