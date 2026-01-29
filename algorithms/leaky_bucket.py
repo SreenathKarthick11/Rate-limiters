@@ -25,8 +25,6 @@ def leaky_bucket_limit(
         outflow_rate=outflow_rate,
         now=now,
     )
-    if not allowed:
-        retry_after = math.ceil((curr_capacity - capacity + 1) / outflow_rate) if outflow_rate > 0 else None
-        return False, {"retry_after": retry_after}
+    retry_after = math.ceil((curr_capacity - capacity + 1) / outflow_rate) if outflow_rate > 0 else None
 
-    return allowed, {"curr_capacity": curr_capacity}
+    return allowed, {"curr_capacity": curr_capacity, "retry_after": retry_after}

@@ -1,22 +1,12 @@
 from time import time
-from typing import NamedTuple
-
 from redis_client import run_token_bucket
-
-
-class RateLimitResult(NamedTuple):
-    allowed: bool
-    limit: int
-    remaining: int
-    retry_after: int | None
-
 
 def token_bucket_limit(
     *,
     identifier: str,
     capacity: int,
     refill_rate: float,
-) -> RateLimitResult:
+) -> tuple[bool, dict]:
     """
     Apply token bucket rate limiting.
 
@@ -35,10 +25,4 @@ def token_bucket_limit(
         now=now,
     )
 
-
-    return RateLimitResult(
-        allowed=allowed,
-        limit=capacity,
-        remaining=remaining,
-        retry_after=retry_after,
-    )
+    return allowed, {"remaining": remaining, "retry_after": retry_after}
