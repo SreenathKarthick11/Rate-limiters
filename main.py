@@ -7,5 +7,5 @@ def root():
     return {"status": "ok"}
 
 @app.get("/limited")
-def limited( _ = Depends(rate_limit(capacity=5, refill_rate=0.5))):
+def limited( _ = Depends(rate_limit(type="token_bucket", capacity=5, rate=0.5))):
     return {"status": "limited access granted"}
