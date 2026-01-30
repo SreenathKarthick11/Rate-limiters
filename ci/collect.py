@@ -17,7 +17,7 @@ for name, path in RESULTS.items():
 x = range(len(RESULTS))
 labels = list(RESULTS.keys())
 
-width = 0.35
+width = 0.25
 
 plt.figure(figsize=(6, 4))
 
