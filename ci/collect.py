@@ -32,7 +32,7 @@ plt.bar(
     [i + width / 2 for i in x],
     blocked,
     width=width,
-    label="429 Too Many Requests",color="#E57373",
+    label="429 Too Many Requests",color="#E44D4D",
 )
 
 plt.xticks(list(x), labels)
