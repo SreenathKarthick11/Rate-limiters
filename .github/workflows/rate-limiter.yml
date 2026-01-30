@@ -30,15 +30,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       - name: Generate plots
         run: python ci/collect.py
 
-      - name: Upload plot artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: rate-limit-plots
-          path: ci/plots/
+      # - name: Upload plot artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: rate-limit-plots
+      #     path: ci/plots/
+
+      - name: Commit plot to repository
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add ci/plots/*.png
+          git commit -m "Update rate limiter performance plot" || echo "No changes"
+          git push
+
 
       - name: Shutdown
         if: always()
