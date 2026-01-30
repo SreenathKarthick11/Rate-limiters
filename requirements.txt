@@ -2,4 +2,4 @@ fastapi
 uvicorn[standard]
 redis
 python-dotenv
-mathplotlib.pyplot
+matplotlib
