@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 set -e
 
-URL="http://localhost:8000/limited"
+mkdir -p ci/results
 
-> responses.txt
+run_traffic () {
+  local name=$1
+  local url=$2
 
-for i in {1..7}; do
-  curl -s -o /dev/null -w "%{http_code}\n" "$URL" >> responses.txt
-done
+  echo "Running traffic for $name"
 
-cat responses.txt
+  > ci/results/${name}.txt
+
+  for i in {1..7}; do
+    curl -s -o /dev/null -w "%{http_code}\n" \
+      http://localhost:8000${url} >> ci/results/${name}.txt
+  done
+}
+
+run_traffic token_bucket /token_bucket
+sleep 2
+run_traffic leaky_bucket /leaky_bucket

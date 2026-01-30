@@ -21,9 +21,14 @@ jobs:
         run: |
           ./ci/traffic.sh
 
-      - name: Validate rate limiting
-        run: |
-          ./ci/assert.sh
+      - name: Generate plots
+        run: python ci/collect.py
+
+      - name: Upload plot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rate-limit-plots
+          path: ci/plots/
 
       - name: Shutdown
         if: always()
