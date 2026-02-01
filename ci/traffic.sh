@@ -11,7 +11,7 @@ run_traffic () {
 
   > ci/results/${name}.txt
 
-  for i in {1..7}; do
+  for i in {1..100}; do
     curl -s -o /dev/null -w "%{http_code}\n" \
       http://localhost:8000${url} >> ci/results/${name}.txt
   done
