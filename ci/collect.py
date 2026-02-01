@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 RESULTS = {
     "Token Bucket": Path("ci/results/token_bucket.txt"),
     "Leaky Bucket": Path("ci/results/leaky_bucket.txt"),
+    "Fixed Window Counter": Path("ci/results/fixed_window_counter.txt"),
 }
 
 success = []
