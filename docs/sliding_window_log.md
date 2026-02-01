@@ -154,18 +154,6 @@ Atomic execution (e.g., Redis Lua scripts) is required to avoid race conditions.
 
 ---
 
-## Comparison with Fixed Window Counter
-
-| Feature         | Fixed Window | Sliding Window Log |
-| --------------- | ------------ | ------------------ |
-| Window type     | Fixed        | Sliding            |
-| Boundary bursts | ❌ Yes        | ✅ No               |
-| Accuracy        | Medium       | Exact              |
-| Memory usage    | Low          | High               |
-| Implementation  | Simple       | Moderate           |
-
----
-
 ## Advantages
 
 * Perfectly enforces rate limits
@@ -205,8 +193,5 @@ Typical use cases:
 ## References
 
 * [Rate Limiter – ByteByteGo](https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter)
-* Redis Sorted Sets Documentation
-
-```
 
 ---
