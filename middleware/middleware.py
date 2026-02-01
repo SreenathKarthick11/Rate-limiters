@@ -1,8 +1,9 @@
 from fastapi import Request, HTTPException, status
 from algorithms.token_bucket import token_bucket_limit
 from algorithms.leaky_bucket import leaky_bucket_limit
+from algorithms.fixed_window_counter import fixed_window_counter_limit
 
-def rate_limit(type: str, capacity: int, rate: float):
+def rate_limit(type: str, capacity: int, rate: float = None,window_size: int = None):
     async def dependency(request: Request):
         identifier = request.client.host
 
@@ -17,6 +18,12 @@ def rate_limit(type: str, capacity: int, rate: float):
                 identifier=identifier,
                 capacity=capacity,
                 outflow_rate=rate,
+            )
+        elif type == "fixed_window_counter":
+            allowed, info = fixed_window_counter_limit(
+                identifier=identifier,
+                capacity=capacity,
+                window_size=window_size,
             )
         else:
             raise HTTPException(
