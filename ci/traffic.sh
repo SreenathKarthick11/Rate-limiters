@@ -23,3 +23,5 @@ sleep 2
 run_traffic leaky_bucket /leaky_bucket
 sleep 2
 run_traffic fixed_window_counter /fixed_window_counter
+sleep 2
+run_traffic sliding_window_log /sliding_window_log

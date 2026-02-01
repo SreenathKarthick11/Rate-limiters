@@ -19,3 +19,7 @@ def limited( _ = Depends(rate_limit(type="leaky_bucket", capacity=5, rate=0.5)))
 @app.get("/fixed_window_counter")
 def limited( _ = Depends(rate_limit(type="fixed_window_counter", capacity=5,window_size=10))):
     return {"status": "limited access granted"}
+
+@app.get("/sliding_window_log")
+def limited( _ = Depends(rate_limit(type="sliding_window_log", capacity=5,window_size=10))):
+    return {"status": "limited access granted"}
