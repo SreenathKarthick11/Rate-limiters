@@ -14,13 +14,13 @@ def sliding_window_log_limit(
     capacity     -> max requests allowed in the window
     window_size  -> size of the time window in seconds
     """
-    now = int(time() * 1000)  # Convert to milliseconds
+    now = int(time()*1000)  # Convert to milliseconds
     redis_key = f"rate:sliding_window_log:{identifier}"
 
     allowed,curr_capacity,retry_after = run_sliding_window_log(
         key=redis_key,
         capacity=capacity,
-        window_size=window_size * 1000,  # Convert to milliseconds
+        window_size=window_size*1000,  # Convert to milliseconds
         now=now,
     )
 
