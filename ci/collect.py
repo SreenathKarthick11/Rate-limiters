@@ -22,7 +22,7 @@ labels = list(RESULTS.keys())
 
 width = 0.25
 
-plt.figure(figsize=(18, 12))
+plt.figure(figsize=(12, 8))
 
 plt.bar(
     [i - width / 2 for i in x],
