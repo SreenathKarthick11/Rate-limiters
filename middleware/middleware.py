@@ -3,6 +3,7 @@ from algorithms.token_bucket import token_bucket_limit
 from algorithms.leaky_bucket import leaky_bucket_limit
 from algorithms.fixed_window_counter import fixed_window_counter_limit
 from algorithms.sliding_window_log import sliding_window_log_limit
+from algorithms.sliding_window_counter import sliding_window_counter_limit
 
 def rate_limit(type: str, capacity: int, rate: float = None,window_size: int = None):
     async def dependency(request: Request):
@@ -28,6 +29,12 @@ def rate_limit(type: str, capacity: int, rate: float = None,window_size: int = N
             )
         elif type == "sliding_window_log":
             allowed, info = sliding_window_log_limit(
+                identifier=identifier,
+                capacity=capacity,
+                window_size=window_size,
+            )
+        elif type == "sliding_window_counter":
+            allowed, info = sliding_window_counter_limit(
                 identifier=identifier,
                 capacity=capacity,
                 window_size=window_size,
