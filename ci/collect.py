@@ -6,6 +6,7 @@ RESULTS = {
     "Leaky Bucket": Path("ci/results/leaky_bucket.txt"),
     "Fixed Window Counter": Path("ci/results/fixed_window_counter.txt"),
     "Sliding Window Log": Path("ci/results/sliding_window_log.txt"),
+    "Sliding Window Counter": Path("ci/results/sliding_window_counter.txt"),
 }
 
 success = []
@@ -21,7 +22,7 @@ labels = list(RESULTS.keys())
 
 width = 0.25
 
-plt.figure(figsize=(6, 4))
+plt.figure(figsize=(18, 12))
 
 plt.bar(
     [i - width / 2 for i in x],
