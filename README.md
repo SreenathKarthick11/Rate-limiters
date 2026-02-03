@@ -9,6 +9,7 @@
 - [Leaky Bucket Doc](docs/leaky_bucket.md)
 - [Fixed Window Counter Doc](docs/fixed_window_counter.md)
 - [Sliding Window Log Doc](docs/sliding_window_log.md)
+- [Sliding Window Counter Doc](docs/sliding_window_counter.md)
 
 ## Rate Limiter Comparison
 
